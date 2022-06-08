@@ -1,3 +1,5 @@
+const { INPUT } = require('./constants');
+
 // Variable to store conn object from client.js
 let connection;
 
@@ -18,33 +20,10 @@ const handleUserInput = function(key) {
     process.exit();
   }
 
-  // WASD to move Up, Left, Down, Right
-  if (key === 'w') {
-    connection.write('Move: up');
-  }
-
-  if (key === 'a') {
-    connection.write('Move: left');
-  }
-
-  if (key === 's') {
-    connection.write('Move: down');
-  }
-
-  if (key === 'd') {
-    connection.write('Move: right');
-  }
-
-  if (key === '1') {
-    connection.write('Say: Close one!');
-  }
-
-  if (key === '2') {
-    connection.write('Say: That\'s too far...');
-  }
-
-  if (key === '3') {
-    connection.write('Say: Mine!');
+  // W, A, S, D to move Up, Left, Down, Right
+  // 1, 2, 3 for a canned message
+  if (INPUT[key]) {
+    connection.write(INPUT[key]);
   }
 };
 
